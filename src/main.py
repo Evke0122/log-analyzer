@@ -1,15 +1,16 @@
 from log_parser import parse_log_line
+from analyzer import analyze_logs
+
 
 
 def load_logs():
 
     file_path = "../logs/auth.log"
 
+
     with open(file_path, "r") as file:
 
-        lines = file.readlines()
-
-    return lines
+        return file.readlines()
 
 
 
@@ -19,20 +20,53 @@ def main():
     print("---------------------")
 
 
-    logs = load_logs()
+    raw_logs = load_logs()
 
 
-    print("\nParsed logs:\n")
+    parsed_logs = []
 
 
-    for line in logs:
+    # Convert every line into structured data
+    for line in raw_logs:
 
         result = parse_log_line(
             line.strip()
         )
 
 
-        print(result)
+        if result:
+
+            parsed_logs.append(result)
+
+
+
+    report = analyze_logs(
+        parsed_logs
+    )
+
+
+    print("\nSecurity Report")
+    print("----------------")
+
+
+    print(
+        "Failed attempts:",
+        report["failed_attempts"]
+    )
+
+
+    print(
+        "\nFailed attempts by IP:"
+    )
+
+
+    for ip, count in report["failed_by_ip"].items():
+
+        print(
+            ip,
+            "->",
+            count
+        )
 
 
 
