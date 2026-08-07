@@ -106,5 +106,5 @@ Learning Goals
 - Basic brute-force detection
 - JSON data handling
 - Unit testing
-- Git and GitHub
+- Git and GitHub 
 
