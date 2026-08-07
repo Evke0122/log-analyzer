@@ -1,5 +1,6 @@
 from log_parser import parse_log_line
 from analyzer import analyze_logs
+from reporter import save_report
 
 
 
@@ -67,8 +68,10 @@ def main():
             "->",
             count
         )
+        
+    save_report(report)
 
-
+    
 
 if __name__ == "__main__":
     main()
