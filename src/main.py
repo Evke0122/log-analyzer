@@ -61,14 +61,17 @@ def main():
     )
 
 
-    for ip, count in report["failed_by_ip"].items():
+    for ip, data in report["suspicious_ips"].items():
 
         print(
             ip,
             "->",
-            count
+            data["attempts"],
+            "attempts",
+            "| Severity:",
+            data["severity"]
         )
-        
+
     save_report(report)
 
     

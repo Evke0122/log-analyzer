@@ -1,6 +1,9 @@
 {
-    "failed_attempts": 4,
-    "failed_by_ip": {
-        "45.33.12.8": 4
+    "failed_attempts": 10,
+    "suspicious_ips": {
+        "45.33.12.8": {
+            "attempts": 10,
+            "severity": "HIGH"
+        }
     }
 }
