@@ -1,16 +1,20 @@
+
+from pathlib import Path
 from log_parser import parse_log_line
 from analyzer import analyze_logs
 from reporter import save_report
 
 
 
+
 def load_logs():
 
-    file_path = "../logs/auth.log"
+    project_root = Path(__file__).parent.parent
 
+    file_path = project_root / "logs" / "auth.log"
 
     with open(file_path, "r") as file:
-
+        
         return file.readlines()
 
 
